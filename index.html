@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>HELLO INNOFAM!</title>
+  </head>
+  <body>
+      <style>
+        html, body {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        webview{
+          width:100vw;
+          height:100vh;
+        }
+
+
+      </style>
+      <webview id="foo" src="http://innotiveinc.co.kr/desk/" useragent="innotiveinc" style="display:inline-flex;"></webview>
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+      window.$ = window.jQuery = require('jquery');
+    </script>
+  </body>
+</html>

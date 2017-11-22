@@ -1,0 +1,90 @@
+{
+  "name": "innofam",
+  "version": "1.0.0",
+  "description": "innotiveApp test",
+  "main": "main.js",
+  "productName": "INNOFAM",
+  "author": "innotiveinc",
+  "description": "INNOFAMApp",
+  "scripts": {
+    "start": "electron .",
+    "build:osx": "electron-installer-dmg ./innofam-darwin-x64/INNOFAM.app innofamSetup --out=./innofam-darwin-x64",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "build --linux --ia32",
+    "build:linux64": "build --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "build --win --ia32",
+    "build:win64": "build --win --x64",
+    "build": "electron-packager ./ && cp icon.icns innofam-darwin-x64/INNOFAM.app/Contents/Resources/electron.icns"
+  },
+  "repository": "https://github.com/minbbal/innotive-app-test.git",
+  "keywords": [
+    "innotive",
+    "testApp",
+    "start",
+    "demo"
+  ],
+  "author": "jashely",
+  "license": "CC0-1.0",
+  "build": {
+    "productName": "INNOFAM",
+    "appId": "co.kr.innotiveinc",
+    "asar": true,
+    "publish": {
+     "provider": "github",
+     "owner": "minhee-jeong",
+     "repo": "innotive-app-test"
+   },
+    "protocols": {
+      "name": "INNOFAM",
+      "schemes": [
+        "innotiveinc"
+      ]
+    },
+    "mac": {
+      "target": [
+        "default"
+    ],
+    "icon": "icon.icns"
+    },
+    "dmg": {
+      "title": "HELLO INNOFAM!"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis",
+        "github"
+    ],
+     "remoteReleases": "https://github.com/minbbal/innotive-app-test",
+     "icon": "icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "resources/installer/",
+      "output": "dist/",
+      "app": "."
+    }
+  },
+  "devDependencies": {
+    "asar": "^0.14.0",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.45.4",
+    "electron-installer-dmg": "^0.2.1",
+    "electron-installer-squirrel-windows": "^1.3.0",
+    "electron-packager": "^9.1.0",
+    "electron-winstaller": "^2.6.3"
+  }
+}
